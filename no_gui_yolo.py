@@ -135,11 +135,11 @@ while True:
     frame_count += 1
     total_frames += 1
 
-    for (classid, confidence, box) in zip(class_ids, confidences, boxes):
-         color = colors[int(classid) % len(colors)]
-         cv2.rectangle(frame, box, color, 2)
-         cv2.rectangle(frame, (box[0], box[1] - 20), (box[0] + box[2], box[1]), color, -1)
-         cv2.putText(frame, class_list[classid], (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,0))
+    # for (classid, confidence, box) in zip(class_ids, confidences, boxes):
+    #      color = colors[int(classid) % len(colors)]
+    #      cv2.rectangle(frame, box, color, 2)
+    #      cv2.rectangle(frame, (box[0], box[1] - 20), (box[0] + box[2], box[1]), color, -1)
+    #      cv2.putText(frame, class_list[classid], (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,0))
 
     if frame_count >= 30:
         end = time.time() * 1e9
@@ -147,11 +147,11 @@ while True:
         frame_count = 0
         start = time.time() * 1e9
     
-    if fps > 0:
-        fps_label = "FPS: %.2f" % fps
-        cv2.putText(frame, fps_label, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+    # if fps > 0:
+    #     fps_label = "FPS: %.2f" % fps
+    #     cv2.putText(frame, fps_label, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-    cv2.imshow("output", frame)
+    # cv2.imshow("output", frame)
 
     # Optional: break after processing all frames
     if cv2.waitKey(1) > -1:
