@@ -102,7 +102,7 @@ is_cuda = len(sys.argv) > 1 and sys.argv[1] == "cuda"
 net = build_model(is_cuda)
 capture = load_capture()
 
-start = time.time_ns()
+start = time.time() * 1e9
 frame_count = 0
 total_frames = 0
 fps = -1
@@ -129,10 +129,10 @@ while True:
          cv2.putText(frame, class_list[classid], (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,0))
 
     if frame_count >= 30:
-        end = time.time_ns()
+        end = time.time() * 1e9
         fps = 1000000000 * frame_count / (end - start)
         frame_count = 0
-        start = time.time_ns()
+        start = time.time() * 1e9
     
     if fps > 0:
         fps_label = "FPS: %.2f" % fps
